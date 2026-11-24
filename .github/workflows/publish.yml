@@ -1,0 +1,31 @@
+# One-off: joins the model parts pushed to this branch, checks them, and
+# publishes them to the "models" release the WhatScript app downloads from.
+name: Publish models
+on:
+  push:
+    branches: [upload]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Join and check the files
+        run: |
+          mkdir out
+          for f in $(cut -d' ' -f3 parts/SHA256SUMS); do
+            cat parts/$f.part* > out/$f
+          done
+          cd out && sha256sum -c ../parts/SHA256SUMS
+      - name: Publish to the models release
+        run: |
+          gh release view models >/dev/null 2>&1 || gh release create models \
+            --target main --title "Speech models" \
+            --notes "Downloaded by the WhatScript app at first start."
+          gh release upload models out/* --clobber
+          gh release view models --json assets --jq '.assets[] | "\(.name) \(.size)"'

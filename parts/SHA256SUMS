@@ -1,0 +1,7 @@
+85b643c7115648fd09be6835e8c33b3046361730d166a9759dcb898596d8bc28  canary-1b-v2-decoder.int8.onnx
+d64dfd7dfef125e08f4e262d0d63411231bb03f0bbf997f62ac71f5da086f5be  canary-1b-v2-encoder.int8.onnx
+2c9efe6104fd29522ea27ce0e3aef5d37c690af4e5a4232e643e23ca403ffea3  canary-1b-v2-tokens.txt
+938051014f47716a65821e10c38a79e3a3d38f8fa3b3246b9e5fa14c94fa791c  gigaam-v3-e2e-rnnt-decoder.onnx
+c2a6dc4596345fb596323e908bd01ec52811ee88916159c5cc333974ee530125  gigaam-v3-e2e-rnnt-encoder.int8.onnx
+253948be81c639879b63a7b1c2ee5c61789e4383418fda7abbbab7ec8f0eaed5  gigaam-v3-e2e-rnnt-joiner.onnx
+39abae20e692998290c574e606f11a9edef2902a1995463fcff63d1490cf22b7  gigaam-v3-e2e-rnnt-tokens.txt
